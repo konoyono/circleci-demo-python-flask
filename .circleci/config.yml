@@ -53,6 +53,7 @@ jobs:
           name: Deploy Master to Heroku
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              git pull heroku
               git push heroku master
               heroku run python manage.py deploy --app circleci-test-tokada
               heroku restart --app circleci-test-tokada
